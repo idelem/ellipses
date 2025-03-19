@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block-Based Draft Editor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        #editor {
+            min-height: 400px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .block {
+            display: inline;
+            padding: 2px;
+            position: relative;
+            cursor: text;
+        }
+        
+        .block:hover {
+            background-color: rgba(0,0,0,0.05);
+        }
+        
+        .block-controls {
+            position: absolute;
+            top: -24px;
+            left: 0;
+            display: none;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            padding: 2px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+        
+        .block:hover .block-controls {
+            display: flex;
+        }
+        
+        .color-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            margin: 0 2px;
+            border: 1px solid #ccc;
+        }
+        
+        .collapsed {
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100px;
+            background-color: #f8f8f8;
+            vertical-align: bottom;
+        }
+        
+        .toolbar {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Block-Based Draft Editor</h1>
+    
+    <div class="toolbar">
+        <button id="exportBtn">Export Text</button>
+        <button id="toggleBlocksBtn">Show Block Boundaries</button>
+    </div>
+    
+    <div id="editor" contenteditable="true">
+        Start typing your draft here. Each sentence will become a block. (Parentheses will also form their own blocks.) You can hover over blocks to change their importance or collapse them.
+    </div>
+    
+    <script src="editor.js"></script>
+</body>
+</html>
